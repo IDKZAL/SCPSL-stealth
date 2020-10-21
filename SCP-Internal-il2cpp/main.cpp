@@ -259,12 +259,12 @@ void OnGUI(PEXCEPTION_POINTERS ExceptionInfo) {
 			float dist = GetDistance(cameraPosition, entityList[i].position);
 			//auto color = "white";
 
-			if (dist < 1) {
+			//if (dist < 1) {
+			//	return;
+			//}
+			/*if (dist > 500) {
 				return;
-			}
-			if (dist > 500) {
-				return;
-			}
+			}*/
 
 			sprintf(buf, "<color=%s>%s - %.2f</color>", TeamColor[entityList[i].team], TeamName[entityList[i].team], dist);
 			if (playerEsp)
