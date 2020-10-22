@@ -123,7 +123,7 @@ namespace SCPstealth
         {
             if (noRecoilCheck.Checked)
             {
-                MemLib.WriteMemory("SCPSL.exe+0x2944A0", "bytes", "???");
+                //MemLib.WriteMemory("SCPSL.exe+0x2944A0", "bytes", "???");
             }
 
         }

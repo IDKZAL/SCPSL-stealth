@@ -79,7 +79,7 @@
     </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>SCPstealth.MainModule</StartupObject>
+    <StartupObject>SCPstealth.InitModule</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\stealthIcon.ico</ApplicationIcon>
@@ -100,9 +100,7 @@
     </Reference>
     <Reference Include="EasyHook, Version=2.7.7097.0, Culture=neutral, PublicKeyToken=4b580fca19d0b0c5, processorArchitecture=MSIL">
       <HintPath>..\packages\EasyHook.2.7.7097\lib\net40\EasyHook.dll</HintPath>
-    </Reference>
-    <Reference Include="Guna.UI">
-      <HintPath>..\Frameworks\Guna.UI.Activation.Framework\Guna.UI-Framework-Lib-master\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Guna.UI2">
       <HintPath>..\Frameworks\Guna.UI.Activation.Framework\Guna.UI-Framework-Lib-master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
@@ -132,25 +130,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainModule.cs" />
-    <Compile Include="infoBoxMenu.cs">
+    <Compile Include="Modules\InitModule.cs" />
+    <Compile Include="Forms\infoBoxMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="infoBoxMenu.Designer.cs">
+    <Compile Include="Forms\infoBoxMenu.Designer.cs">
       <DependentUpon>infoBoxMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="stealthMenu.cs">
+    <Compile Include="Forms\stealthMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="stealthMenu.Designer.cs">
+    <Compile Include="Forms\stealthMenu.Designer.cs">
       <DependentUpon>stealthMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TainerModule.cs" />
-    <EmbeddedResource Include="infoBoxMenu.resx">
+    <Compile Include="Modules\TainerModule.cs" />
+    <EmbeddedResource Include="Forms\infoBoxMenu.resx">
       <DependentUpon>infoBoxMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="stealthMenu.resx">
+    <EmbeddedResource Include="Forms\stealthMenu.resx">
       <DependentUpon>stealthMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -180,24 +178,12 @@
     <None Include="Resources\stealthmeme.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EasyHook32.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="EasyHook32Svc.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="EasyHook64.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="EasyHook64Svc.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="EasyLoad32.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="EasyLoad64.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="EasyHook32.dll" />
+    <Content Include="EasyHook32Svc.exe" />
+    <Content Include="EasyHook64.dll" />
+    <Content Include="EasyHook64Svc.exe" />
+    <Content Include="EasyLoad32.dll" />
+    <Content Include="EasyLoad64.dll" />
     <Content Include="Resources\stealthIcon.ico" />
   </ItemGroup>
   <ItemGroup>

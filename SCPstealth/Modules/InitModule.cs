@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace SCPstealth
 {
-    static class MainModule
+    static class InitModule
     {
         /// <summary>
         /// The main entry point for the application.
