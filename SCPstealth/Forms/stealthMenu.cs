@@ -11,10 +11,10 @@ namespace SCPstealth
 {
     public partial class stealthMenu : Form
     {
-
         BackgroundWorker backgroundWorker;
 
         infoBoxMenu infoBox = new infoBoxMenu();
+        Cheat cheat = new Cheat();
 
         public stealthMenu()
         {
@@ -23,20 +23,22 @@ namespace SCPstealth
             backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
             backgroundWorker.RunWorkerAsync();
+            cheat.Injected += () => {/* backgroundWorker.CancelAsync()*/};
+            
         }
 
-        public Mem MemLib = new Mem();
-        public bool loaded = false;
+        public Mem mem = new Mem();
+        public bool openedProcess = false;
 
-        private string noProccessFound = "We haven't found the game process.";
+        private const string noProccessFound = "We haven't found the game process.";
 
         public void checkGameProccess()
         {
-            int gameProcId = MemLib.GetProcIdFromName("SCPSL");
+            int gameProcId = mem.GetProcIdFromName("SCPSL");
 
             if (gameProcId == 0)
             {
-                loaded = false;
+                openedProcess = false;
                 this.ProcessFoundText.FillColor = Color.FromArgb(200, 20, 0);
                 this.ProcessFoundText.FillColor2 = Color.FromArgb(255, 50, 0);
                 this.ProcessFoundText.HoverState.FillColor = Color.FromArgb(200, 20, 0);
@@ -50,51 +52,41 @@ namespace SCPstealth
             }
             else
             {
-                loaded = true;
+                openedProcess = mem.OpenProcess("SCPSL");
                 this.ProcessFoundText.FillColor = Color.FromArgb(0, 200, 0);
                 this.ProcessFoundText.FillColor2 = Color.FromArgb(0, 150, 0);
                 this.ProcessFoundText.HoverState.FillColor = Color.FromArgb(0, 200, 0);
                 this.ProcessFoundText.HoverState.FillColor2 = Color.FromArgb(0, 150, 0);
 
-                this.ProcessFoundCheckbox.Checked = true;
+                this.ProcessFoundCheckbox.Checked = openedProcess;
                 this.ProcessFoundCheckbox.CheckedState.FillColor = Color.FromArgb(0, 200, 0);
 
-                MemLib.OpenProcess("SCPSL");
+                
+                if (openedProcess && !cheat.IsInjected)
+                    cheat.Inject(gameProcId);
+                    
             }
         }
 
         private void guna2ControlBox1_Click(object sender, EventArgs e)
         {
+            cheat.UnhookEverything();
             this.Close();
         }
 
         private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
-            if (!loaded)
+            if (!openedProcess)
             {
                 infoBox.ShowDialog();
                 return;
             }
-            if (noRecoilCheck.Checked)
-            {
-                noRecoilCheck.Checked = false;
-            }
-            else
-            {
-                noRecoilCheck.Checked = true;
-            }
+            noRecoilCheck.Checked = !noRecoilCheck.Checked;
         }
 
         private void guna2GradientButton1_Click_1(object sender, EventArgs e)
         {
-            if (noRecoilCheck.Checked)
-            {
-                noRecoilCheck.Checked = false;
-            }
-            else
-            {
-                noRecoilCheck.Checked = true;
-            }
+            noRecoilCheck.Checked = !noRecoilCheck.Checked;
         }
 
         private void MinimizeButton_Click(object sender, EventArgs e)
@@ -104,14 +96,7 @@ namespace SCPstealth
 
         private void ProcessFoundCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (ProcessFoundCheckbox.Checked)
-            {
-                ProcessFoundCheckbox.Checked = false;
-            }
-            else
-            {
-                ProcessFoundCheckbox.Checked = true;
-            }
+            ProcessFoundCheckbox.Checked = !ProcessFoundCheckbox.Checked;
         }
 
         private void ProcessFoundText_Click(object sender, EventArgs e)
@@ -122,10 +107,9 @@ namespace SCPstealth
         private void noRecoilCheck_CheckedChanged(object sender, EventArgs e)
         {
             if (noRecoilCheck.Checked)
-            {
-                //MemLib.WriteMemory("SCPSL.exe+0x2944A0", "bytes", "???");
-            }
-
+                cheat.HookRecoil(0);
+            else
+                cheat.UnhookRecoil();
         }
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -138,30 +122,21 @@ namespace SCPstealth
                 Thread.Sleep(1000);
 
             }
-
-
         }
 
         private void ESPInject_Click(object sender, EventArgs e)
         {
-            if (!loaded) {
+            if (!openedProcess) {
                 MessageBox.Show(noProccessFound);
                 return;
             }
-            if (InjectESPCheck.Checked)
-            {
-                InjectESPCheck.Checked = false;
-            }
-            else
-            {
-                InjectESPCheck.Checked = true;
-            }
+            InjectESPCheck.Checked = !InjectESPCheck.Checked;
         }
 
         private void InjectESPCheck_CheckedChanged(object sender, EventArgs e)
         {
             string GetDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            if (!loaded)
+            if (!openedProcess)
             {
                 return;
             }

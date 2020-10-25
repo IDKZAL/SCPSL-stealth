@@ -100,7 +100,6 @@
     </Reference>
     <Reference Include="EasyHook, Version=2.7.7097.0, Culture=neutral, PublicKeyToken=4b580fca19d0b0c5, processorArchitecture=MSIL">
       <HintPath>..\packages\EasyHook.2.7.7097\lib\net40\EasyHook.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Guna.UI2">
       <HintPath>..\Frameworks\Guna.UI.Activation.Framework\Guna.UI-Framework-Lib-master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
@@ -130,6 +129,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cheat.cs" />
     <Compile Include="Modules\InitModule.cs" />
     <Compile Include="Forms\infoBoxMenu.cs">
       <SubType>Form</SubType>
@@ -178,12 +178,24 @@
     <None Include="Resources\stealthmeme.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EasyHook32.dll" />
-    <Content Include="EasyHook32Svc.exe" />
-    <Content Include="EasyHook64.dll" />
-    <Content Include="EasyHook64Svc.exe" />
-    <Content Include="EasyLoad32.dll" />
-    <Content Include="EasyLoad64.dll" />
+    <Content Include="EasyHook32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EasyHook32Svc.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EasyHook64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EasyHook64Svc.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EasyLoad32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EasyLoad64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\stealthIcon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +209,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Internal\Internal.csproj">
+      <Project>{719d2248-3762-48b9-be2c-11e37f8dc7f2}</Project>
+      <Name>Internal</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCPstealth", "SCPstealth\SCPstealth.csproj", "{BE2B5961-DDDE-45F2-B25F-76BD87D36CF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internal", "Internal\Internal.csproj", "{719D2248-3762-48B9-BE2C-11E37F8DC7F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,14 @@ Global
 		{BE2B5961-DDDE-45F2-B25F-76BD87D36CF2}.Release|Any CPU.Build.0 = Release|x64
 		{BE2B5961-DDDE-45F2-B25F-76BD87D36CF2}.Release|x64.ActiveCfg = Release|x64
 		{BE2B5961-DDDE-45F2-B25F-76BD87D36CF2}.Release|x64.Build.0 = Release|x64
+		{719D2248-3762-48B9-BE2C-11E37F8DC7F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{719D2248-3762-48B9-BE2C-11E37F8DC7F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{719D2248-3762-48B9-BE2C-11E37F8DC7F2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{719D2248-3762-48B9-BE2C-11E37F8DC7F2}.Debug|x64.Build.0 = Debug|Any CPU
+		{719D2248-3762-48B9-BE2C-11E37F8DC7F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{719D2248-3762-48B9-BE2C-11E37F8DC7F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{719D2248-3762-48B9-BE2C-11E37F8DC7F2}.Release|x64.ActiveCfg = Release|Any CPU
+		{719D2248-3762-48B9-BE2C-11E37F8DC7F2}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
